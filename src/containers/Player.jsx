@@ -1,8 +1,8 @@
-import React, { useLayoutEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { useLayoutEffect } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { getVideoSource } from "../actions";
-import '../assets/styles/components/Player.scss';
+import "../assets/styles/components/Player.scss";
 import NotFount from "./NotFount";
 
 const Player = (props) => {
@@ -11,7 +11,9 @@ const Player = (props) => {
   useLayoutEffect(() => {
     props.getVideoSource(id);
   }, []);
-  return !hasPlaying ? <NotFount /> : (
+  return !hasPlaying ? (
+    <NotFount />
+  ) : (
     <div className="Player">
       <video controls autoPlay>
         <source src={props.playing.source} type="video/mp4" />
@@ -24,13 +26,13 @@ const Player = (props) => {
       </div>
     </div>
   );
-}
+};
 
 Player.propTypes = {
   getVideoSource: PropTypes.func,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     playing: state.playing,
   };
